@@ -17,12 +17,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        
+
         val name = findViewById<EditText>(R.id.Name)
         val number = findViewById<EditText>(R.id.Number)
         val address = findViewById<EditText>(R.id.Address)
         val buttonSave = findViewById<Button>(R.id.btn_save)
-        val buttonShowContact=findViewById<Button>(R.id.button2)
+        val buttonShowContact = findViewById<Button>(R.id.button2)
+        val buttonDelete = findViewById<Button>(R.id.buttonDelete)
 
 
         val db = Firebase.firestore
@@ -43,17 +44,19 @@ class MainActivity : AppCompatActivity() {
                     name.text.clear()
                     number.text.clear()
                     address.text.clear()
-                    Toast.makeText(applicationContext, "Add ${documentReference.id}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        applicationContext,
+                        "Add ${documentReference.id}",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(applicationContext, "${e.message}", Toast.LENGTH_LONG).show()
                 }
         }
         buttonShowContact.setOnClickListener {
-            val intent=Intent(applicationContext,AllContactsActivity::class.java)
+            val intent = Intent(applicationContext, AllContactsActivity::class.java)
             startActivity(intent)
         }
     }
-
-
 }

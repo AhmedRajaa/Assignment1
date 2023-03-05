@@ -88,6 +88,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/buttonDelete"
             android:layout_marginBottom="10dp"
             android:layout_marginStart="50dp"
             android:layout_marginLeft="120dp"
